@@ -24,6 +24,7 @@ import Footer from '../components/Footer';
 import SamsungPhone from '../components/SamsungPhone';
 import OptimizedImage from '../components/OptimizedImage';
 import TrustMetrics from '../components/TrustMetrics';
+import TypewriterText from '../components/TypewriterText';
 
 const HomePage = () => {
  const heroRef = useRef(null);
