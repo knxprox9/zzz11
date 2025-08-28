@@ -23,29 +23,34 @@ const TypewriterText = ({
       // تقسيم النص إلى أسطر مناسبة للعربية
       let processedText = text;
       if (multiline) {
-        // تقسيم النص يدوياً بناء على الطول المناسب
-        const words = text.split(' ');
-        const lines = [];
-        let currentLine = '';
-        const maxWordsPerLine = 6; // تقريباً 6 كلمات لكل سطر
-        
-        for (let i = 0; i < words.length; i++) {
-          const word = words[i];
-          const lineWords = currentLine.split(' ').filter(w => w.length > 0);
+        // تقسيم خاص للنص العربي
+        if (text.includes('المنصة الرائدة في حلول الدفع الألكتروني في اليمن')) {
+          processedText = 'المنصة الرائدة في حلول الدفع\nالألكتروني في اليمن';
+        } else {
+          // تقسيم النص عام بناء على الطول المناسب
+          const words = text.split(' ');
+          const lines = [];
+          let currentLine = '';
+          const maxWordsPerLine = 5; // تقريباً 5 كلمات لكل سطر للعربية
           
-          if (lineWords.length >= maxWordsPerLine && currentLine.length > 0) {
-            lines.push(currentLine.trim());
-            currentLine = word;
-          } else {
-            currentLine += (currentLine ? ' ' : '') + word;
+          for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            const lineWords = currentLine.split(' ').filter(w => w.length > 0);
+            
+            if (lineWords.length >= maxWordsPerLine && currentLine.length > 0) {
+              lines.push(currentLine.trim());
+              currentLine = word;
+            } else {
+              currentLine += (currentLine ? ' ' : '') + word;
+            }
           }
+          
+          if (currentLine.trim()) {
+            lines.push(currentLine.trim());
+          }
+          
+          processedText = lines.join('\n');
         }
-        
-        if (currentLine.trim()) {
-          lines.push(currentLine.trim());
-        }
-        
-        processedText = lines.join('\n');
       }
 
       const typeTimer = setInterval(() => {
