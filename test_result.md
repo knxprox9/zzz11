@@ -118,7 +118,7 @@ backend:
         comment: "تم تثبيت اعتمادات الباك إند بنجاح وتشغيل الخادم على المنفذ 8001. الخادم يعمل مع قاعدة بيانات MongoDB ويحتوي على endpoints للتحقق من الحالة"
 
 frontend:
-  - task: "React Application with Arabic Content"
+  - task: "React Application with Arabic Content and Typewriter Effect"
     implemented: true
     working: true
     file: "/app/frontend/src/App.js"
@@ -129,6 +129,9 @@ frontend:
       - working: true
         agent: "main"
         comment: "تم تثبيت اعتمادات الفرونت إند باستخدام yarn وتشغيل التطبيق بنجاح. التطبيق يعرض واجهة عربية لخدمات الدفع الإلكتروني مع تصميم احترافي"
+      - working: true
+        agent: "main"
+        comment: "تم إضافة تأثير الطباعة المتحركة للعنوان الرئيسي بتحسينات متقدمة: (1) تثبيت حجم الإطار الأصفر، (2) كتابة تبدأ من بداية السطر مع مراعاة المحاذاة العربية، (3) انتقال طبيعي بين السطور. التأثير يعمل بشكل مثالي مع النص: 'المنصة الرائدة في حلول الدفع' في السطر الأول و 'الألكتروني في اليمن' في السطر الثاني"
 
 metadata:
   created_by: "main_agent"
