@@ -178,7 +178,7 @@ const HomePage = () => {
      }}>
        <TypewriterText 
          text="المنصة الرائدة في حلول الدفع الألكتروني في اليمن"
-         speed={60}
+         speed={50}
          delay={800}
          showCursor={true}
          multiline={true}
