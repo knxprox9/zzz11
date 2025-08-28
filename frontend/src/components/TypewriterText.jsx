@@ -81,7 +81,12 @@ const TypewriterText = ({
     <span className={className}>
       <span 
         dangerouslySetInnerHTML={{ __html: displayText }}
-        style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2' }}
+        style={{ 
+          whiteSpace: 'pre-wrap', 
+          lineHeight: '1.1',
+          display: 'block',
+          textAlign: 'center'
+        }}
       />
       {showCursor && !isCompleted && (
         <span className="inline-block w-1 h-[0.9em] bg-yellow-600 ml-1 animate-pulse" 
