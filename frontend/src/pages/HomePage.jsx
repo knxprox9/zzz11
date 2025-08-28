@@ -165,15 +165,15 @@ const HomePage = () => {
    <div className="inline-block bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-[6.5rem] sm:text-[3.2rem] font-black tracking-tight leading-tight mb-6 inline-badge transform origin-center scale-x-110 sm:scale-x-[1.28] scale-y-[2.2] sm:scale-y-[1.34]"
         style={{ 
           width: '100%', 
-          minHeight: '60px',
-          maxHeight: '80px',
+          minHeight: window.innerWidth <= 640 ? '55px' : '80px',
+          maxHeight: window.innerWidth <= 640 ? '70px' : '120px',
           height: 'auto',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
           overflow: 'hidden',
-          padding: '8px 16px'
+          padding: window.innerWidth <= 640 ? '6px 12px' : '8px 16px'
         }}>
      <div style={{ 
        width: '100%',
