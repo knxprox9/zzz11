@@ -66,12 +66,14 @@ const TypewriterText = ({
       <span style={{ 
         whiteSpace: 'pre-wrap', 
         lineHeight: '1.1',
-        display: 'inline'
+        display: 'inline',
+        position: 'relative'
       }}>
         {displayText.split('\n').map((line, lineIndex) => (
           <div key={lineIndex} style={{
             textAlign: 'right',
-            width: '100%'
+            width: '100%',
+            position: 'relative'
           }}>
             {line}
             {/* عرض المؤشر فقط في السطر الأخير وإذا لم ينته التأثير */}
@@ -79,11 +81,12 @@ const TypewriterText = ({
              showCursor && 
              !isCompleted && (
               <span 
-                className="inline-block w-1 bg-yellow-600 ml-1" 
+                className="inline-block w-1 bg-yellow-600" 
                 style={{ 
                   height: '0.9em',
                   animation: 'blink 1s infinite',
-                  verticalAlign: 'baseline'
+                  verticalAlign: 'baseline',
+                  marginLeft: '2px'
                 }}>
               </span>
             )}
