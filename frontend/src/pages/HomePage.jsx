@@ -162,13 +162,28 @@ const HomePage = () => {
  {/* Text Content - Right Side */}
  <div className="col-span-1 origin-right scale-25 sm:scale-[0.42]">
  <div className="text-center">
-   <div className="inline-block bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-[6.5rem] sm:text-[3.2rem] font-black tracking-tight leading-tight mb-6 inline-badge transform origin-center scale-x-110 sm:scale-x-[1.28] scale-y-[2.2] sm:scale-y-[1.34]">
-     <TypewriterText 
-      text="المنصة الرائدة في حلول الدفع الألكتروني في اليمن"
-      speed={60}
-      delay={800}
-      showCursor={true}
-    />
+   <div className="inline-block bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-[6.5rem] sm:text-[3.2rem] font-black tracking-tight leading-tight mb-6 inline-badge transform origin-center scale-x-110 sm:scale-x-[1.28] scale-y-[2.2] sm:scale-y-[1.34]"
+        style={{ 
+          minWidth: '100%', 
+          minHeight: '120px', 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center'
+        }}>
+     <div style={{ 
+       width: '100%',
+       textAlign: 'center',
+       direction: 'rtl'
+     }}>
+       <TypewriterText 
+         text="المنصة الرائدة في حلول الدفع الألكتروني في اليمن"
+         speed={60}
+         delay={800}
+         showCursor={true}
+         multiline={true}
+       />
+     </div>
    </div>
  {/* مساحة بيضاء فارغة للجوال فقط - تم تقليلها بسبب العنوان الأكبر */}
  <div className="block sm:hidden h-12"></div>
