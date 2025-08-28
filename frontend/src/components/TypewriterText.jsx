@@ -5,7 +5,8 @@ const TypewriterText = ({
   speed = 100, 
   delay = 0, 
   className = "",
-  onComplete = null 
+  onComplete = null,
+  showCursor = true 
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
@@ -40,9 +41,17 @@ const TypewriterText = ({
   return (
     <span className={className}>
       {displayText}
-      {!isCompleted && (
-        <span className="animate-pulse text-yellow-600">|</span>
+      {showCursor && !isCompleted && (
+        <span className="inline-block w-1 h-[0.9em] bg-yellow-600 ml-1 animate-pulse" 
+              style={{ animation: 'blink 1s infinite' }}>
+        </span>
       )}
+      <style jsx>{`
+        @keyframes blink {
+          0%, 50% { opacity: 1; }
+          51%, 100% { opacity: 0; }
+        }
+      `}</style>
     </span>
   );
 };
