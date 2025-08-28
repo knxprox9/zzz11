@@ -6,7 +6,8 @@ const TypewriterText = ({
   delay = 0, 
   className = "",
   onComplete = null,
-  showCursor = true 
+  showCursor = true,
+  multiline = false 
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
@@ -19,9 +20,42 @@ const TypewriterText = ({
       setDisplayText('');
       setIsCompleted(false);
 
+      // تقسيم النص إلى أسطر مناسبة للعربية
+      let processedText = text;
+      if (multiline) {
+        // تقسيم النص يدوياً بناء على الطول المناسب
+        const words = text.split(' ');
+        const lines = [];
+        let currentLine = '';
+        const maxWordsPerLine = 6; // تقريباً 6 كلمات لكل سطر
+        
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          const lineWords = currentLine.split(' ').filter(w => w.length > 0);
+          
+          if (lineWords.length >= maxWordsPerLine && currentLine.length > 0) {
+            lines.push(currentLine.trim());
+            currentLine = word;
+          } else {
+            currentLine += (currentLine ? ' ' : '') + word;
+          }
+        }
+        
+        if (currentLine.trim()) {
+          lines.push(currentLine.trim());
+        }
+        
+        processedText = lines.join('\n');
+      }
+
       const typeTimer = setInterval(() => {
-        if (index < text.length) {
-          setDisplayText(prev => prev + text.charAt(index));
+        if (index < processedText.length) {
+          const char = processedText.charAt(index);
+          if (char === '\n') {
+            setDisplayText(prev => prev + '<br>');
+          } else {
+            setDisplayText(prev => prev + char);
+          }
           index++;
         } else {
           clearInterval(typeTimer);
@@ -36,11 +70,14 @@ const TypewriterText = ({
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [text, speed, delay, onComplete]);
+  }, [text, speed, delay, onComplete, multiline]);
 
   return (
     <span className={className}>
-      {displayText}
+      <span 
+        dangerouslySetInnerHTML={{ __html: displayText }}
+        style={{ whiteSpace: 'pre-wrap', lineHeight: '1.2' }}
+      />
       {showCursor && !isCompleted && (
         <span className="inline-block w-1 h-[0.9em] bg-yellow-600 ml-1 animate-pulse" 
               style={{ animation: 'blink 1s infinite' }}>
