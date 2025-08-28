@@ -164,12 +164,13 @@ const HomePage = () => {
  <div className="text-center">
    <div className="inline-block bg-yellow-100 text-yellow-800 px-6 py-3 rounded-full text-[6.5rem] sm:text-[3.2rem] font-black tracking-tight leading-tight mb-6 inline-badge transform origin-center scale-x-110 sm:scale-x-[1.28] scale-y-[2.2] sm:scale-y-[1.34]"
         style={{ 
-          minWidth: '100%', 
-          minHeight: '120px', 
+          width: '100%', 
+          height: '120px', 
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          textAlign: 'center'
+          textAlign: 'center',
+          overflow: 'hidden'
         }}>
      <div style={{ 
        width: '100%',
